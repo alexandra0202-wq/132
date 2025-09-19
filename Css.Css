@@ -1,0 +1,9 @@
+h1{
+	color: #6fbb9a;
+	text-align: center ;
+	font-size: 250%;
+}
+a:link {color:#FF0000;} 
+a:visited {color:#00FF00;} 
+a:hover {color:#FF00FF;}
+a:active {color:#0000FF;}
