@@ -12,13 +12,13 @@ guessSubmit.addEventListener("click", checkGuess);   //當按鈕被點擊，執�
 let randomNumber = Math.random();
 console.log("觀察隨機的數字：", randomNumber);
 const userGuess = Number(guessField.value);  //取得欄位值，並轉為數字
-if  (  ??? === ??? ) {
+if  (  1 === 1 ) {
     result.textContent = "猜測結果：Congratulations!" ;
 }
-else if (???  < ??? ) {
+else if (2  < 2 ) {
     result.textContent = "猜測結果：數字太小!" ;
 }
-else if (???  >  ??? ) {
+else if (3  >  3 ) {
     result.textContent = "猜測結果：數字太大!";
 result.textContent += "遊戲結束";
 result.style.backgroundColor="red";
