@@ -1,0 +1,185 @@
+<!-- <head>
+    <meta charset="utf-8">
+    <script src="10-31.js" defer></script>
+</head>
+<body>
+    <canvas id="canvas" width='800' height='800'></canvas>
+    <div>
+    顏色：<input id="color" type="color">
+    粗細：<input id="lineWidth" type="range" min="1" max="20" step="1" />
+    <p>Value: <output id="value"></output></p>
+</div>
+<button id='toshow'>產生圖片</button>
+<button id='clear'>清除</button>
+<br><img id='show'>
+
+</body> -->
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <title>🎨 小畫家</title>
+  <script src="10-31.js" defer></script>
+  <style>
+    /* 整體排版 */
+    body {
+      font-family: "Microsoft JhengHei", sans-serif;
+      background: linear-gradient(135deg, #f5f7ff, #e8efff);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* 左右筆刷裝飾 */
+    body::before,
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 180px;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle at 20% 30%, #a5b4fc 0%, transparent 70%),
+                  radial-gradient(circle at 80% 70%, #93c5fd 0%, transparent 70%);
+      opacity: 0.25;
+      filter: blur(25px);
+    }
+
+    body::before {
+      left: -60px;
+      transform: rotate(-5deg);
+    }
+
+    body::after {
+      right: -60px;
+      transform: rotate(5deg);
+    }
+
+    /* 標題樣式 */
+    h1 {
+      color: #1e3a8a;
+      margin-top: 10px;
+      font-size: 2em;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+      letter-spacing: 1px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    /* 畫布樣式 */
+    #canvas {
+      border: 4px solid #93c5fd;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      background-color: #fff;
+      cursor: crosshair;
+      display: block;
+      margin: 25px auto;
+      transition: 0.4s;
+    }
+
+    #canvas:hover {
+      transform: scale(1.01);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 工具列 */
+    #controls {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 15px 25px;
+      border-radius: 14px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-bottom: 20px;
+      animation: fadeUp 1s ease-out;
+    }
+
+    input[type="color"] {
+      width: 50px;
+      height: 30px;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      vertical-align: middle;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="range"] {
+      vertical-align: middle;
+      margin: 0 8px;
+      accent-color: #3b82f6;
+    }
+
+    output {
+      font-weight: bold;
+      color: #1e40af;
+    }
+
+    /* 按鈕樣式 */
+    button {
+      background: linear-gradient(135deg, #60a5fa, #2563eb);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+      transition: 0.3s;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 顯示圖片 */
+    img#show {
+      display: block;
+      margin: 25px auto;
+      max-width: 80%;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      animation: fadeUp 1s ease-out;
+    }
+
+    /* 動畫效果 */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🎨 小畫家</h1>
+
+  <canvas id="canvas" width="800" height="800"></canvas>
+
+  <div id="controls">
+    顏色：<input id="color" type="color">
+    粗細：<input id="lineWidth" type="range" min="1" max="20" step="1" />
+    <p>Value: <output id="value"></output></p>
+  </div>
+
+  <button id="toshow">產生圖片</button>
+  <button id="clear">清除</button>
+
+  <img id="show">
+</body>
+</html>
+
